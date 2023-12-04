@@ -13,8 +13,7 @@ const pool = new Pool({
 router.get('/employee-details/:employeeUuid', async (req, res) => {
     try {
         const { employeeUuid } = req.params;
-        const employeeDetailsQuery = `
-            SELECT 
+        const employeeDetailsQuery = `SELECT 
                 employee.employee_uuid,
                 employee.employee_id,
                 employee.user_uuid,
