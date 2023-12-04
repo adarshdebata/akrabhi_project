@@ -11,6 +11,8 @@ const departmentRegisterApiRouter = require('./api-modules/departmentRegisterApi
 const departmentDetailsApiRouter = require('./api-modules/departmentDetailsApi');
 const employeeRegisterApiRouter = require('./api-modules/employeeRegisterApi');
 const employeeDetailsApiRouter = require('./api-modules/employeeDetailsApi');
+const updateCompanyAdminApiRouter = require('./api-modules/updateCompanyAdminApi');
+const updateDeptHeadApiRouter = require('./api-modules/updateDeptHeadApi');
 
 dotenv.config();
 
@@ -77,6 +79,9 @@ app.use('/api/register-department', departmentRegisterApiRouter);
 app.use('/api/department-details', departmentDetailsApiRouter);
 app.use('/api/register-employee', employeeRegisterApiRouter);
 app.use('/api/employee-details', employeeDetailsApiRouter);
+app.use('/api/update-company-admin', updateCompanyAdminApiRouter);
+app.use('/api/update-dept-head', updateDeptHeadApiRouter);
+
 app.post('/register-user', async (req, res) => {
     try {
         const response = await pool.query('INSERT INTO usertable (first_name, last_name, dob, bloodgroup, email, phone_number) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *', [
