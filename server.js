@@ -19,7 +19,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 const pool = new Pool({
-    user: process.env.DB_USER,
+    user: process.env.DB_USER, 
     host: process.env.DB_HOST,
     database: process.env.DB_DATABASE,
     password: process.env.DB_PASSWORD,

@@ -14,25 +14,7 @@ const pool = new Pool({
 router.get('/company-details/:companyUuid', async (req, res) => {
     try {
         const { companyUuid } = req.params;
-        const companyDetailsQuery = `
-            SELECT 
-                company.company_uuid,
-                company.company_id,
-                company.company_name,
-                company.description,
-                company.contact_no,
-                company.email_id,
-                company.address_lane,
-                company.city,
-                company.state,
-                company.country,
-                company.pincode,
-                company.created_at,
-                usertable.first_name AS admin_first_name,
-                usertable.last_name AS admin_last_name
-            FROM company
-            LEFT JOIN usertable ON company.company_admin = usertable.user_uuid
-            WHERE company.company_uuid = $1
+        const companyDetailsQuery = `SELECT company.company_uuid, company.company_id, company.company_name, company.description, company.contact_no, company.email_id, company.address_lane, company.city, company.state, company.country, company.pincode, company.created_at, usertable.first_name AS admin_first_name, usertable.last_name AS admin_last_name  FROM company   LEFT JOIN usertable ON company.company_admin = usertable.user_uuid WHERE company.company_uuid = $1
         `;
 
         const response = await pool.query(companyDetailsQuery, [companyUuid]);
