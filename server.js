@@ -25,6 +25,10 @@ const pool = new Pool({
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,
 });
+pool.connect()
+    .then(() => console.log('Connected to the database'))
+    .catch((error) => console.error('Error connecting to the database:', error));
+
 
 app.use(bodyParser.json());
 app.get('/api/users', async (req, res) => {
